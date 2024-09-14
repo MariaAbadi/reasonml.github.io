@@ -1,0 +1,254 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Reason · Reason lets you write simple, fast and quality type safe code while leveraging both the JavaScript &amp; OCaml ecosystems.</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Reason lets you write simple, fast and quality type safe code while leveraging both the JavaScript &amp; OCaml ecosystems."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Reason · Reason lets you write simple, fast and quality type safe code while leveraging both the JavaScript &amp; OCaml ecosystems."/><meta property="og:type" content="website"/><meta property="og:url" content="https://reasonml.github.io/"/><meta property="og:description" content="Reason lets you write simple, fast and quality type safe code while leveraging both the JavaScript &amp; OCaml ecosystems."/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/icon_50.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"/><link rel="alternate" type="application/atom+xml" href="https://reasonml.github.io/blog/atom.xml" title="Reason Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://reasonml.github.io/blog/feed.xml" title="Reason Blog RSS Feed"/><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/dummy.svg" alt="Reason"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/en/what-and-why" target="_self">Docs</a></li><li class=""><a href="/en/try" target="_self">Try</a></li><li class=""><a href="/api/index" target="_self">API</a></li><li class=""><a href="/docs/en/community" target="_self">Community</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/ja/type_Format">日本語</a></li><li><a href="/de/type_Format">Deutsch</a></li><li><a href="/es-ES/type_Format">Español</a></li><li><a href="/fr/type_Format">Français</a></li><li><a href="/ko/type_Format">한국어</a></li><li><a href="/pt-BR/type_Format">Português (Brasil)</a></li><li><a href="/ru/type_Format">Русский</a></li><li><a href="/uk/type_Format">Українська</a></li><li><a href="/zh-CN/type_Format">中文</a></li><li><a href="/zh-TW/type_Format">繁體中文</a></li><li><a href="https://crowdin.com/project/reason" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/facebook/reason" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div><link rel="stylesheet" href="/css/main.css"><div class="ocamldoc"><pre>sig
+
+&nbsp;&nbsp;type&nbsp;formatter
+&nbsp;&nbsp;val&nbsp;pp_open_box&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;open_box&nbsp;:&nbsp;int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_close_box&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;close_box&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_open_hbox&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;open_hbox&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_open_vbox&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;open_vbox&nbsp;:&nbsp;int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_open_hvbox&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;open_hvbox&nbsp;:&nbsp;int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_open_hovbox&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;open_hovbox&nbsp;:&nbsp;int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_string&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;string&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;print_string&nbsp;:&nbsp;string&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_bytes&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;bytes&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;print_bytes&nbsp;:&nbsp;bytes&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_as&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;string&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;print_as&nbsp;:&nbsp;int&nbsp;-&gt;&nbsp;string&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_int&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;print_int&nbsp;:&nbsp;int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_float&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;float&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;print_float&nbsp;:&nbsp;float&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_char&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;char&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;print_char&nbsp;:&nbsp;char&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_bool&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;bool&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;print_bool&nbsp;:&nbsp;bool&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_space&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;print_space&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_cut&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;print_cut&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_break&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;print_break&nbsp;:&nbsp;int&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_custom_break&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Format.formatter&nbsp;-&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;fits:string&nbsp;*&nbsp;int&nbsp;*&nbsp;string&nbsp;-&gt;&nbsp;breaks:string&nbsp;*&nbsp;int&nbsp;*&nbsp;string&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_force_newline&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;force_newline&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_if_newline&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;print_if_newline&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_flush&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;print_flush&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_newline&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;print_newline&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_set_margin&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;set_margin&nbsp;:&nbsp;int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_get_margin&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;int
+&nbsp;&nbsp;val&nbsp;get_margin&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;int
+&nbsp;&nbsp;val&nbsp;pp_set_max_indent&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;set_max_indent&nbsp;:&nbsp;int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_get_max_indent&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;int
+&nbsp;&nbsp;val&nbsp;get_max_indent&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;int
+&nbsp;&nbsp;type&nbsp;geometry&nbsp;=&nbsp;{&nbsp;max_indent&nbsp;:&nbsp;int;&nbsp;margin&nbsp;:&nbsp;int;&nbsp;}
+&nbsp;&nbsp;val&nbsp;check_geometry&nbsp;:&nbsp;Format.geometry&nbsp;-&gt;&nbsp;bool
+&nbsp;&nbsp;val&nbsp;pp_set_geometry&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Format.formatter&nbsp;-&gt;&nbsp;max_indent:int&nbsp;-&gt;&nbsp;margin:int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;set_geometry&nbsp;:&nbsp;max_indent:int&nbsp;-&gt;&nbsp;margin:int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_safe_set_geometry&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Format.formatter&nbsp;-&gt;&nbsp;max_indent:int&nbsp;-&gt;&nbsp;margin:int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;safe_set_geometry&nbsp;:&nbsp;max_indent:int&nbsp;-&gt;&nbsp;margin:int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_update_geometry&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Format.formatter&nbsp;-&gt;&nbsp;(Format.geometry&nbsp;-&gt;&nbsp;Format.geometry)&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;update_geometry&nbsp;:&nbsp;(Format.geometry&nbsp;-&gt;&nbsp;Format.geometry)&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_get_geometry&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;Format.geometry
+&nbsp;&nbsp;val&nbsp;get_geometry&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;Format.geometry
+&nbsp;&nbsp;val&nbsp;pp_set_max_boxes&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;set_max_boxes&nbsp;:&nbsp;int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_get_max_boxes&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;int
+&nbsp;&nbsp;val&nbsp;get_max_boxes&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;int
+&nbsp;&nbsp;val&nbsp;pp_over_max_boxes&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;bool
+&nbsp;&nbsp;val&nbsp;over_max_boxes&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;bool
+&nbsp;&nbsp;val&nbsp;pp_open_tbox&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;open_tbox&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_close_tbox&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;close_tbox&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_set_tab&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;set_tab&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_tab&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;print_tab&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_tbreak&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;print_tbreak&nbsp;:&nbsp;int&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_set_ellipsis_text&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;string&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;set_ellipsis_text&nbsp;:&nbsp;string&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_get_ellipsis_text&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;string
+&nbsp;&nbsp;val&nbsp;get_ellipsis_text&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;string
+&nbsp;&nbsp;type&nbsp;stag&nbsp;=&nbsp;..
+&nbsp;&nbsp;type&nbsp;tag&nbsp;=&nbsp;string
+&nbsp;&nbsp;type&nbsp;stag&nbsp;+=&nbsp;String_tag&nbsp;of&nbsp;Format.tag
+&nbsp;&nbsp;val&nbsp;pp_open_stag&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;Format.stag&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;open_stag&nbsp;:&nbsp;Format.stag&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_close_stag&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;close_stag&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_set_tags&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;bool&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;set_tags&nbsp;:&nbsp;bool&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_set_print_tags&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;bool&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;set_print_tags&nbsp;:&nbsp;bool&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_set_mark_tags&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;bool&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;set_mark_tags&nbsp;:&nbsp;bool&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_get_print_tags&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;bool
+&nbsp;&nbsp;val&nbsp;get_print_tags&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;bool
+&nbsp;&nbsp;val&nbsp;pp_get_mark_tags&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;bool
+&nbsp;&nbsp;val&nbsp;get_mark_tags&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;bool
+&nbsp;&nbsp;val&nbsp;pp_set_formatter_out_channel&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Format.formatter&nbsp;-&gt;&nbsp;Stdlib.out_channel&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;set_formatter_out_channel&nbsp;:&nbsp;Stdlib.out_channel&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_set_formatter_output_functions&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Format.formatter&nbsp;-&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;(string&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;unit)&nbsp;-&gt;&nbsp;(unit&nbsp;-&gt;&nbsp;unit)&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;set_formatter_output_functions&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(string&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;unit)&nbsp;-&gt;&nbsp;(unit&nbsp;-&gt;&nbsp;unit)&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_get_formatter_output_functions&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Format.formatter&nbsp;-&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;unit&nbsp;-&gt;&nbsp;(string&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;unit)&nbsp;*&nbsp;(unit&nbsp;-&gt;&nbsp;unit)
+&nbsp;&nbsp;val&nbsp;get_formatter_output_functions&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;unit&nbsp;-&gt;&nbsp;(string&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;unit)&nbsp;*&nbsp;(unit&nbsp;-&gt;&nbsp;unit)
+&nbsp;&nbsp;type&nbsp;formatter_out_functions&nbsp;=&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;out_string&nbsp;:&nbsp;string&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;unit;
+&nbsp;&nbsp;&nbsp;&nbsp;out_flush&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;unit;
+&nbsp;&nbsp;&nbsp;&nbsp;out_newline&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;unit;
+&nbsp;&nbsp;&nbsp;&nbsp;out_spaces&nbsp;:&nbsp;int&nbsp;-&gt;&nbsp;unit;
+&nbsp;&nbsp;&nbsp;&nbsp;out_indent&nbsp;:&nbsp;int&nbsp;-&gt;&nbsp;unit;
+&nbsp;&nbsp;}
+&nbsp;&nbsp;val&nbsp;pp_set_formatter_out_functions&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Format.formatter&nbsp;-&gt;&nbsp;Format.formatter_out_functions&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;set_formatter_out_functions&nbsp;:&nbsp;Format.formatter_out_functions&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_get_formatter_out_functions&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;Format.formatter_out_functions
+&nbsp;&nbsp;val&nbsp;get_formatter_out_functions&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;Format.formatter_out_functions
+&nbsp;&nbsp;type&nbsp;formatter_stag_functions&nbsp;=&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;mark_open_stag&nbsp;:&nbsp;Format.stag&nbsp;-&gt;&nbsp;string;
+&nbsp;&nbsp;&nbsp;&nbsp;mark_close_stag&nbsp;:&nbsp;Format.stag&nbsp;-&gt;&nbsp;string;
+&nbsp;&nbsp;&nbsp;&nbsp;print_open_stag&nbsp;:&nbsp;Format.stag&nbsp;-&gt;&nbsp;unit;
+&nbsp;&nbsp;&nbsp;&nbsp;print_close_stag&nbsp;:&nbsp;Format.stag&nbsp;-&gt;&nbsp;unit;
+&nbsp;&nbsp;}
+&nbsp;&nbsp;val&nbsp;pp_set_formatter_stag_functions&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Format.formatter&nbsp;-&gt;&nbsp;Format.formatter_stag_functions&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;set_formatter_stag_functions&nbsp;:&nbsp;Format.formatter_stag_functions&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_get_formatter_stag_functions&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;Format.formatter_stag_functions
+&nbsp;&nbsp;val&nbsp;get_formatter_stag_functions&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;Format.formatter_stag_functions
+&nbsp;&nbsp;val&nbsp;formatter_of_out_channel&nbsp;:&nbsp;Stdlib.out_channel&nbsp;-&gt;&nbsp;Format.formatter
+&nbsp;&nbsp;val&nbsp;synchronized_formatter_of_out_channel&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Stdlib.out_channel&nbsp;-&gt;&nbsp;Format.formatter&nbsp;Stdlib.Domain.DLS.key
+&nbsp;&nbsp;val&nbsp;std_formatter&nbsp;:&nbsp;Format.formatter
+&nbsp;&nbsp;val&nbsp;get_std_formatter&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;Format.formatter
+&nbsp;&nbsp;val&nbsp;err_formatter&nbsp;:&nbsp;Format.formatter
+&nbsp;&nbsp;val&nbsp;get_err_formatter&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;Format.formatter
+&nbsp;&nbsp;val&nbsp;formatter_of_buffer&nbsp;:&nbsp;Stdlib.Buffer.t&nbsp;-&gt;&nbsp;Format.formatter
+&nbsp;&nbsp;val&nbsp;stdbuf&nbsp;:&nbsp;Stdlib.Buffer.t
+&nbsp;&nbsp;val&nbsp;get_stdbuf&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;Stdlib.Buffer.t
+&nbsp;&nbsp;val&nbsp;str_formatter&nbsp;:&nbsp;Format.formatter
+&nbsp;&nbsp;val&nbsp;get_str_formatter&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;Format.formatter
+&nbsp;&nbsp;val&nbsp;flush_str_formatter&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;string
+&nbsp;&nbsp;val&nbsp;make_formatter&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(string&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;unit)&nbsp;-&gt;&nbsp;(unit&nbsp;-&gt;&nbsp;unit)&nbsp;-&gt;&nbsp;Format.formatter
+&nbsp;&nbsp;val&nbsp;make_synchronized_formatter&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(string&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;unit)&nbsp;-&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;(unit&nbsp;-&gt;&nbsp;unit)&nbsp;-&gt;&nbsp;Format.formatter&nbsp;Stdlib.Domain.DLS.key
+&nbsp;&nbsp;val&nbsp;formatter_of_out_functions&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Format.formatter_out_functions&nbsp;-&gt;&nbsp;Format.formatter
+&nbsp;&nbsp;type&nbsp;symbolic_output_item&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Output_flush
+&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Output_newline
+&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Output_string&nbsp;of&nbsp;string
+&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Output_spaces&nbsp;of&nbsp;int
+&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Output_indent&nbsp;of&nbsp;int
+&nbsp;&nbsp;type&nbsp;symbolic_output_buffer
+&nbsp;&nbsp;val&nbsp;make_symbolic_output_buffer&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;Format.symbolic_output_buffer
+&nbsp;&nbsp;val&nbsp;clear_symbolic_output_buffer&nbsp;:&nbsp;Format.symbolic_output_buffer&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;get_symbolic_output_buffer&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Format.symbolic_output_buffer&nbsp;-&gt;&nbsp;Format.symbolic_output_item&nbsp;list
+&nbsp;&nbsp;val&nbsp;flush_symbolic_output_buffer&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Format.symbolic_output_buffer&nbsp;-&gt;&nbsp;Format.symbolic_output_item&nbsp;list
+&nbsp;&nbsp;val&nbsp;add_symbolic_output_item&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Format.symbolic_output_buffer&nbsp;-&gt;&nbsp;Format.symbolic_output_item&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;formatter_of_symbolic_output_buffer&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Format.symbolic_output_buffer&nbsp;-&gt;&nbsp;Format.formatter
+&nbsp;&nbsp;val&nbsp;pp_print_list&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;?pp_sep:(Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;unit)&nbsp;-&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;(Format.formatter&nbsp;-&gt;&nbsp;'a&nbsp;-&gt;&nbsp;unit)&nbsp;-&gt;&nbsp;Format.formatter&nbsp;-&gt;&nbsp;'a&nbsp;list&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_seq&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;?pp_sep:(Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;unit)&nbsp;-&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;(Format.formatter&nbsp;-&gt;&nbsp;'a&nbsp;-&gt;&nbsp;unit)&nbsp;-&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;Format.formatter&nbsp;-&gt;&nbsp;'a&nbsp;Stdlib.Seq.t&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_text&nbsp;:&nbsp;Format.formatter&nbsp;-&gt;&nbsp;string&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_option&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;?none:(Format.formatter&nbsp;-&gt;&nbsp;unit&nbsp;-&gt;&nbsp;unit)&nbsp;-&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;(Format.formatter&nbsp;-&gt;&nbsp;'a&nbsp;-&gt;&nbsp;unit)&nbsp;-&gt;&nbsp;Format.formatter&nbsp;-&gt;&nbsp;'a&nbsp;option&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_result&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;ok:(Format.formatter&nbsp;-&gt;&nbsp;'a&nbsp;-&gt;&nbsp;unit)&nbsp;-&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;error:(Format.formatter&nbsp;-&gt;&nbsp;'e&nbsp;-&gt;&nbsp;unit)&nbsp;-&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;Format.formatter&nbsp;-&gt;&nbsp;('a,&nbsp;'e)&nbsp;Stdlib.result&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;pp_print_either&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;left:(Format.formatter&nbsp;-&gt;&nbsp;'a&nbsp;-&gt;&nbsp;unit)&nbsp;-&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;right:(Format.formatter&nbsp;-&gt;&nbsp;'b&nbsp;-&gt;&nbsp;unit)&nbsp;-&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;Format.formatter&nbsp;-&gt;&nbsp;('a,&nbsp;'b)&nbsp;Stdlib.Either.t&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;fprintf&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Format.formatter&nbsp;-&gt;&nbsp;('a,&nbsp;Format.formatter,&nbsp;unit)&nbsp;Stdlib.format&nbsp;-&gt;&nbsp;'a
+&nbsp;&nbsp;val&nbsp;printf&nbsp;:&nbsp;('a,&nbsp;Format.formatter,&nbsp;unit)&nbsp;Stdlib.format&nbsp;-&gt;&nbsp;'a
+&nbsp;&nbsp;val&nbsp;eprintf&nbsp;:&nbsp;('a,&nbsp;Format.formatter,&nbsp;unit)&nbsp;Stdlib.format&nbsp;-&gt;&nbsp;'a
+&nbsp;&nbsp;val&nbsp;sprintf&nbsp;:&nbsp;('a,&nbsp;unit,&nbsp;string)&nbsp;Stdlib.format&nbsp;-&gt;&nbsp;'a
+&nbsp;&nbsp;val&nbsp;asprintf&nbsp;:&nbsp;('a,&nbsp;Format.formatter,&nbsp;unit,&nbsp;string)&nbsp;Stdlib.format4&nbsp;-&gt;&nbsp;'a
+&nbsp;&nbsp;val&nbsp;dprintf&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;('a,&nbsp;Format.formatter,&nbsp;unit,&nbsp;Format.formatter&nbsp;-&gt;&nbsp;unit)&nbsp;Stdlib.format4&nbsp;-&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;'a
+&nbsp;&nbsp;val&nbsp;ifprintf&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Format.formatter&nbsp;-&gt;&nbsp;('a,&nbsp;Format.formatter,&nbsp;unit)&nbsp;Stdlib.format&nbsp;-&gt;&nbsp;'a
+&nbsp;&nbsp;val&nbsp;kfprintf&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(Format.formatter&nbsp;-&gt;&nbsp;'a)&nbsp;-&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;Format.formatter&nbsp;-&gt;&nbsp;('b,&nbsp;Format.formatter,&nbsp;unit,&nbsp;'a)&nbsp;Stdlib.format4&nbsp;-&gt;&nbsp;'b
+&nbsp;&nbsp;val&nbsp;kdprintf&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;((Format.formatter&nbsp;-&gt;&nbsp;unit)&nbsp;-&gt;&nbsp;'a)&nbsp;-&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;('b,&nbsp;Format.formatter,&nbsp;unit,&nbsp;'a)&nbsp;Stdlib.format4&nbsp;-&gt;&nbsp;'b
+&nbsp;&nbsp;val&nbsp;ikfprintf&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(Format.formatter&nbsp;-&gt;&nbsp;'a)&nbsp;-&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;Format.formatter&nbsp;-&gt;&nbsp;('b,&nbsp;Format.formatter,&nbsp;unit,&nbsp;'a)&nbsp;Stdlib.format4&nbsp;-&gt;&nbsp;'b
+&nbsp;&nbsp;val&nbsp;ksprintf&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(string&nbsp;-&gt;&nbsp;'a)&nbsp;-&gt;&nbsp;('b,&nbsp;unit,&nbsp;string,&nbsp;'a)&nbsp;Stdlib.format4&nbsp;-&gt;&nbsp;'b
+&nbsp;&nbsp;val&nbsp;kasprintf&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(string&nbsp;-&gt;&nbsp;'a)&nbsp;-&gt;&nbsp;('b,&nbsp;Format.formatter,&nbsp;unit,&nbsp;'a)&nbsp;Stdlib.format4&nbsp;-&gt;&nbsp;'b
+end</pre></div></div><span><script src="/js/redirectBlog.js"></script></span></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '966d1e412f67114a07dc0afe44b19b53',
+                indexName: 'reason',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["lang:en"]}
+              });
+            </script></body></html>

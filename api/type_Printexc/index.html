@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Reason · Reason lets you write simple, fast and quality type safe code while leveraging both the JavaScript &amp; OCaml ecosystems.</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Reason lets you write simple, fast and quality type safe code while leveraging both the JavaScript &amp; OCaml ecosystems."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Reason · Reason lets you write simple, fast and quality type safe code while leveraging both the JavaScript &amp; OCaml ecosystems."/><meta property="og:type" content="website"/><meta property="og:url" content="https://reasonml.github.io/"/><meta property="og:description" content="Reason lets you write simple, fast and quality type safe code while leveraging both the JavaScript &amp; OCaml ecosystems."/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/icon_50.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"/><link rel="alternate" type="application/atom+xml" href="https://reasonml.github.io/blog/atom.xml" title="Reason Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://reasonml.github.io/blog/feed.xml" title="Reason Blog RSS Feed"/><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/dummy.svg" alt="Reason"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/en/what-and-why" target="_self">Docs</a></li><li class=""><a href="/en/try" target="_self">Try</a></li><li class=""><a href="/api/index" target="_self">API</a></li><li class=""><a href="/docs/en/community" target="_self">Community</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/ja/type_Printexc">日本語</a></li><li><a href="/de/type_Printexc">Deutsch</a></li><li><a href="/es-ES/type_Printexc">Español</a></li><li><a href="/fr/type_Printexc">Français</a></li><li><a href="/ko/type_Printexc">한국어</a></li><li><a href="/pt-BR/type_Printexc">Português (Brasil)</a></li><li><a href="/ru/type_Printexc">Русский</a></li><li><a href="/uk/type_Printexc">Українська</a></li><li><a href="/zh-CN/type_Printexc">中文</a></li><li><a href="/zh-TW/type_Printexc">繁體中文</a></li><li><a href="https://crowdin.com/project/reason" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/facebook/reason" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div><link rel="stylesheet" href="/css/main.css"><div class="ocamldoc"><pre>sig
+
+&nbsp;&nbsp;type&nbsp;t&nbsp;=&nbsp;exn&nbsp;=&nbsp;..
+&nbsp;&nbsp;val&nbsp;to_string&nbsp;:&nbsp;exn&nbsp;-&gt;&nbsp;string
+&nbsp;&nbsp;val&nbsp;to_string_default&nbsp;:&nbsp;exn&nbsp;-&gt;&nbsp;string
+&nbsp;&nbsp;val&nbsp;print&nbsp;:&nbsp;('a&nbsp;-&gt;&nbsp;'b)&nbsp;-&gt;&nbsp;'a&nbsp;-&gt;&nbsp;'b
+&nbsp;&nbsp;val&nbsp;catch&nbsp;:&nbsp;('a&nbsp;-&gt;&nbsp;'b)&nbsp;-&gt;&nbsp;'a&nbsp;-&gt;&nbsp;'b
+&nbsp;&nbsp;val&nbsp;print_backtrace&nbsp;:&nbsp;Stdlib.out_channel&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;get_backtrace&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;string
+&nbsp;&nbsp;val&nbsp;record_backtrace&nbsp;:&nbsp;bool&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;backtrace_status&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;bool
+&nbsp;&nbsp;val&nbsp;register_printer&nbsp;:&nbsp;(exn&nbsp;-&gt;&nbsp;string&nbsp;option)&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;use_printers&nbsp;:&nbsp;exn&nbsp;-&gt;&nbsp;string&nbsp;option
+&nbsp;&nbsp;type&nbsp;raw_backtrace
+&nbsp;&nbsp;type&nbsp;raw_backtrace_entry&nbsp;=&nbsp;private&nbsp;int
+&nbsp;&nbsp;val&nbsp;raw_backtrace_entries&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Printexc.raw_backtrace&nbsp;-&gt;&nbsp;Printexc.raw_backtrace_entry&nbsp;array
+&nbsp;&nbsp;val&nbsp;get_raw_backtrace&nbsp;:&nbsp;unit&nbsp;-&gt;&nbsp;Printexc.raw_backtrace
+&nbsp;&nbsp;val&nbsp;print_raw_backtrace&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Stdlib.out_channel&nbsp;-&gt;&nbsp;Printexc.raw_backtrace&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;raw_backtrace_to_string&nbsp;:&nbsp;Printexc.raw_backtrace&nbsp;-&gt;&nbsp;string
+&nbsp;&nbsp;external&nbsp;raise_with_backtrace&nbsp;:&nbsp;exn&nbsp;-&gt;&nbsp;Printexc.raw_backtrace&nbsp;-&gt;&nbsp;'a
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;"%raise_with_backtrace"
+&nbsp;&nbsp;external&nbsp;get_callstack&nbsp;:&nbsp;int&nbsp;-&gt;&nbsp;Printexc.raw_backtrace
+&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;"caml_get_current_callstack"
+&nbsp;&nbsp;val&nbsp;default_uncaught_exception_handler&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;exn&nbsp;-&gt;&nbsp;Printexc.raw_backtrace&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;val&nbsp;set_uncaught_exception_handler&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(exn&nbsp;-&gt;&nbsp;Printexc.raw_backtrace&nbsp;-&gt;&nbsp;unit)&nbsp;-&gt;&nbsp;unit
+&nbsp;&nbsp;type&nbsp;backtrace_slot
+&nbsp;&nbsp;val&nbsp;backtrace_slots&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Printexc.raw_backtrace&nbsp;-&gt;&nbsp;Printexc.backtrace_slot&nbsp;array&nbsp;option
+&nbsp;&nbsp;val&nbsp;backtrace_slots_of_raw_entry&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Printexc.raw_backtrace_entry&nbsp;-&gt;&nbsp;Printexc.backtrace_slot&nbsp;array&nbsp;option
+&nbsp;&nbsp;type&nbsp;location&nbsp;=&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;filename&nbsp;:&nbsp;string;
+&nbsp;&nbsp;&nbsp;&nbsp;line_number&nbsp;:&nbsp;int;
+&nbsp;&nbsp;&nbsp;&nbsp;start_char&nbsp;:&nbsp;int;
+&nbsp;&nbsp;&nbsp;&nbsp;end_char&nbsp;:&nbsp;int;
+&nbsp;&nbsp;}
+&nbsp;&nbsp;module&nbsp;Slot&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;sig
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;t&nbsp;=&nbsp;Printexc.backtrace_slot
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;val&nbsp;is_raise&nbsp;:&nbsp;Printexc.Slot.t&nbsp;-&gt;&nbsp;bool
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;val&nbsp;is_inline&nbsp;:&nbsp;Printexc.Slot.t&nbsp;-&gt;&nbsp;bool
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;val&nbsp;location&nbsp;:&nbsp;Printexc.Slot.t&nbsp;-&gt;&nbsp;Printexc.location&nbsp;option
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;val&nbsp;name&nbsp;:&nbsp;Printexc.Slot.t&nbsp;-&gt;&nbsp;string&nbsp;option
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;val&nbsp;format&nbsp;:&nbsp;int&nbsp;-&gt;&nbsp;Printexc.Slot.t&nbsp;-&gt;&nbsp;string&nbsp;option
+&nbsp;&nbsp;&nbsp;&nbsp;end
+&nbsp;&nbsp;type&nbsp;raw_backtrace_slot
+&nbsp;&nbsp;val&nbsp;raw_backtrace_length&nbsp;:&nbsp;Printexc.raw_backtrace&nbsp;-&gt;&nbsp;int
+&nbsp;&nbsp;val&nbsp;get_raw_backtrace_slot&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Printexc.raw_backtrace&nbsp;-&gt;&nbsp;int&nbsp;-&gt;&nbsp;Printexc.raw_backtrace_slot
+&nbsp;&nbsp;val&nbsp;convert_raw_backtrace_slot&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Printexc.raw_backtrace_slot&nbsp;-&gt;&nbsp;Printexc.backtrace_slot
+&nbsp;&nbsp;val&nbsp;get_raw_backtrace_next_slot&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;Printexc.raw_backtrace_slot&nbsp;-&gt;&nbsp;Printexc.raw_backtrace_slot&nbsp;option
+&nbsp;&nbsp;val&nbsp;exn_slot_id&nbsp;:&nbsp;exn&nbsp;-&gt;&nbsp;int
+&nbsp;&nbsp;val&nbsp;exn_slot_name&nbsp;:&nbsp;exn&nbsp;-&gt;&nbsp;string
+&nbsp;&nbsp;val&nbsp;string_of_extension_constructor&nbsp;:&nbsp;Stdlib.Obj.t&nbsp;-&gt;&nbsp;string
+end</pre></div></div><span><script src="/js/redirectBlog.js"></script></span></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '966d1e412f67114a07dc0afe44b19b53',
+                indexName: 'reason',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["lang:en"]}
+              });
+            </script></body></html>

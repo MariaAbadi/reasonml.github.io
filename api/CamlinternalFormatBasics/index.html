@@ -1,0 +1,953 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Reason · Reason lets you write simple, fast and quality type safe code while leveraging both the JavaScript &amp; OCaml ecosystems.</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Reason lets you write simple, fast and quality type safe code while leveraging both the JavaScript &amp; OCaml ecosystems."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Reason · Reason lets you write simple, fast and quality type safe code while leveraging both the JavaScript &amp; OCaml ecosystems."/><meta property="og:type" content="website"/><meta property="og:url" content="https://reasonml.github.io/"/><meta property="og:description" content="Reason lets you write simple, fast and quality type safe code while leveraging both the JavaScript &amp; OCaml ecosystems."/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/icon_50.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"/><link rel="alternate" type="application/atom+xml" href="https://reasonml.github.io/blog/atom.xml" title="Reason Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://reasonml.github.io/blog/feed.xml" title="Reason Blog RSS Feed"/><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/dummy.svg" alt="Reason"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/en/what-and-why" target="_self">Docs</a></li><li class=""><a href="/en/try" target="_self">Try</a></li><li class=""><a href="/api/index" target="_self">API</a></li><li class=""><a href="/docs/en/community" target="_self">Community</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/ja/CamlinternalFormatBasics">日本語</a></li><li><a href="/de/CamlinternalFormatBasics">Deutsch</a></li><li><a href="/es-ES/CamlinternalFormatBasics">Español</a></li><li><a href="/fr/CamlinternalFormatBasics">Français</a></li><li><a href="/ko/CamlinternalFormatBasics">한국어</a></li><li><a href="/pt-BR/CamlinternalFormatBasics">Português (Brasil)</a></li><li><a href="/ru/CamlinternalFormatBasics">Русский</a></li><li><a href="/uk/CamlinternalFormatBasics">Українська</a></li><li><a href="/zh-CN/CamlinternalFormatBasics">中文</a></li><li><a href="/zh-TW/CamlinternalFormatBasics">繁體中文</a></li><li><a href="https://crowdin.com/project/reason" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/facebook/reason" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div><link rel="stylesheet" href="/css/main.css"><div class="ocamldoc">
+<h1>Module <a href="type_CamlinternalFormatBasics.html">CamlinternalFormatBasics</a></h1>
+
+<pre id="MODULECamlinternalFormatBasics"><span class="keyword">module</span> CamlinternalFormatBasics: sig .. end</pre><hr width="100%">
+
+<pre><span class="keyword">type</span> padty = </pre><table class="typetable">
+<tbody><tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Left</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Right</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Zeros</code></td>
+
+</tr></tbody></table>
+
+
+
+<pre><span class="keyword">type</span> int_conv = </pre><table class="typetable">
+<tbody><tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int_d</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int_pd</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int_sd</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int_i</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int_pi</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int_si</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int_x</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int_Cx</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int_X</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int_CX</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int_o</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int_Co</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int_u</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int_Cd</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int_Ci</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int_Cu</code></td>
+
+</tr></tbody></table>
+
+
+
+<pre><span class="keyword">type</span> float_flag_conv = </pre><table class="typetable">
+<tbody><tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Float_flag_</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Float_flag_p</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Float_flag_s</code></td>
+
+</tr></tbody></table>
+
+
+
+<pre><span class="keyword">type</span> float_kind_conv = </pre><table class="typetable">
+<tbody><tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Float_f</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Float_e</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Float_E</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Float_g</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Float_G</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Float_F</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Float_h</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Float_H</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Float_CF</code></td>
+
+</tr></tbody></table>
+
+
+
+<pre id="TYPEfloat_conv"><span class="keyword">type</span> float_conv = float_flag_conv *       float_kind_conv </pre>
+
+
+<pre id="TYPEchar_set"><span class="keyword">type</span> char_set = string </pre>
+
+
+<pre><span class="keyword">type</span> counter = </pre><table class="typetable">
+<tbody><tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Line_counter</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Char_counter</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Token_counter</code></td>
+
+</tr></tbody></table>
+
+
+
+<pre><span class="keyword">type</span> ('a, 'b) padding = </pre><table class="typetable">
+<tbody><tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>No_padding : ('a0, 'a0) padding</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Lit_padding : padty * int -&gt; ('a1, 'a1) padding</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Arg_padding : padty -&gt; (int -&gt; 'a2, 'a2) padding</code></td>
+
+</tr></tbody></table>
+
+
+
+<pre id="TYPEpad_option"><span class="keyword">type</span> pad_option = int option </pre>
+
+
+<pre><span class="keyword">type</span> ('a, 'b) precision = </pre><table class="typetable">
+<tbody><tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>No_precision : ('a0, 'a0) precision</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Lit_precision : int -&gt; ('a1, 'a1) precision</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Arg_precision : (int -&gt; 'a2, 'a2) precision</code></td>
+
+</tr></tbody></table>
+
+
+
+<pre id="TYPEprec_option"><span class="keyword">type</span> prec_option = int option </pre>
+
+
+<pre><span class="keyword">type</span> ('a, 'b, 'c) custom_arity = </pre><table class="typetable">
+<tbody><tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Custom_zero : ('a0, string, 'a0) custom_arity</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Custom_succ : ('a1, 'b0, 'c0) custom_arity -&gt; ('a1, 'x -&gt; 'b0, 'x -&gt; 'c0) custom_arity</code></td>
+
+</tr></tbody></table>
+
+
+
+<pre><span class="keyword">type</span> block_type = </pre><table class="typetable">
+<tbody><tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Pp_hbox</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Pp_vbox</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Pp_hvbox</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Pp_hovbox</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Pp_box</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Pp_fits</code></td>
+
+</tr></tbody></table>
+
+
+
+<pre><span class="keyword">type</span> formatting_lit = </pre><table class="typetable">
+<tbody><tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Close_box</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Close_tag</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Break of string * int * int</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>FFlush</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Force_newline</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Flush_newline</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Magic_size of string * int</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Escaped_at</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Escaped_percent</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Scan_indic of char</code></td>
+
+</tr></tbody></table>
+
+
+
+<pre><span class="keyword">type</span> ('a, 'b, 'c, 'd, 'e, 'f) formatting_gen = </pre><table class="typetable">
+<tbody><tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Open_tag : ('a0, 'b0, 'c0, 'd0, 'e0, 'f0) format6 -&gt; ('a0, 'b0, 'c0, 'd0, 'e0, 'f0) formatting_gen</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Open_box : ('a1, 'b1, 'c1, 'd1, 'e1, 'f1) format6 -&gt; ('a1, 'b1, 'c1, 'd1, 'e1, 'f1) formatting_gen</code></td>
+
+</tr></tbody></table>
+
+
+
+<pre id="TYPEfmtty"><span class="keyword">type</span> ('a, 'b, 'c, 'd, 'e, 'f) fmtty = ('a, 'b, 'c, 'd, 'e, 'f, 'a, 'b, 'c, 'd, 'e, 'f)       fmtty_rel </pre>
+
+
+<pre><span class="keyword">type</span> ('a1, 'b1, 'c1, 'd1, 'e1, 'f1, 'a2, 'b2, 'c2, 'd2, 'e2, 'f2) fmtty_rel = </pre><table class="typetable">
+<tbody><tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Char_ty : ('a10, 'b10, 'c10, 'd10, 'e10, 'f10, 'a20, 'b20, 'c20, 'd20, 'e20, 'f20)     fmtty_rel -&gt; (char -&gt; 'a10, 'b10, 'c10, 'd10, 'e10, 'f10, char -&gt; 'a20, 'b20, 'c20, 'd20,        'e20, 'f20)       fmtty_rel</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>String_ty : ('a11, 'b11, 'c11, 'd11, 'e11, 'f11, 'a21, 'b21, 'c21, 'd21, 'e21, 'f21)     fmtty_rel -&gt; (string -&gt; 'a11, 'b11, 'c11, 'd11, 'e11, 'f11, string -&gt; 'a21, 'b21, 'c21,        'd21, 'e21, 'f21)       fmtty_rel</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int_ty : ('a12, 'b12, 'c12, 'd12, 'e12, 'f12, 'a22, 'b22, 'c22, 'd22, 'e22, 'f22)     fmtty_rel -&gt; (int -&gt; 'a12, 'b12, 'c12, 'd12, 'e12, 'f12, int -&gt; 'a22, 'b22, 'c22, 'd22,        'e22, 'f22)       fmtty_rel</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int32_ty : ('a13, 'b13, 'c13, 'd13, 'e13, 'f13, 'a23, 'b23, 'c23, 'd23, 'e23, 'f23)     fmtty_rel -&gt; (int32 -&gt; 'a13, 'b13, 'c13, 'd13, 'e13, 'f13, int32 -&gt; 'a23, 'b23, 'c23,        'd23, 'e23, 'f23)       fmtty_rel</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Nativeint_ty : ('a14, 'b14, 'c14, 'd14, 'e14, 'f14, 'a24, 'b24, 'c24, 'd24, 'e24, 'f24)     fmtty_rel -&gt; (nativeint -&gt; 'a14, 'b14, 'c14, 'd14, 'e14, 'f14, nativeint -&gt; 'a24, 'b24,        'c24, 'd24, 'e24, 'f24)       fmtty_rel</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int64_ty : ('a15, 'b15, 'c15, 'd15, 'e15, 'f15, 'a25, 'b25, 'c25, 'd25, 'e25, 'f25)     fmtty_rel -&gt; (int64 -&gt; 'a15, 'b15, 'c15, 'd15, 'e15, 'f15, int64 -&gt; 'a25, 'b25, 'c25,        'd25, 'e25, 'f25)       fmtty_rel</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Float_ty : ('a16, 'b16, 'c16, 'd16, 'e16, 'f16, 'a26, 'b26, 'c26, 'd26, 'e26, 'f26)     fmtty_rel -&gt; (float -&gt; 'a16, 'b16, 'c16, 'd16, 'e16, 'f16, float -&gt; 'a26, 'b26, 'c26,        'd26, 'e26, 'f26)       fmtty_rel</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Bool_ty : ('a17, 'b17, 'c17, 'd17, 'e17, 'f17, 'a27, 'b27, 'c27, 'd27, 'e27, 'f27)     fmtty_rel -&gt; (bool -&gt; 'a17, 'b17, 'c17, 'd17, 'e17, 'f17, bool -&gt; 'a27, 'b27, 'c27, 'd27,        'e27, 'f27)       fmtty_rel</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Format_arg_ty : ('g, 'h, 'i, 'j, 'k, 'l) fmtty        * ('a18, 'b18, 'c18, 'd18, 'e18, 'f18, 'a28, 'b28, 'c28, 'd28, 'e28, 'f28)          fmtty_rel -&gt; (('g, 'h, 'i, 'j, 'k, 'l) format6 -&gt; 'a18, 'b18,        'c18, 'd18, 'e18, 'f18,        ('g, 'h, 'i, 'j, 'k, 'l) format6 -&gt; 'a28, 'b28,        'c28, 'd28, 'e28, 'f28)       fmtty_rel</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Format_subst_ty : ('g0, 'h0, 'i0, 'j0, 'k0, 'l0, 'g1, 'b19, 'c19, 'j1, 'd19, 'a19)     fmtty_rel        * ('g0, 'h0, 'i0, 'j0, 'k0, 'l0, 'g2, 'b29, 'c29, 'j2, 'd29, 'a29)          fmtty_rel        * ('a19, 'b19, 'c19, 'd19, 'e19, 'f19, 'a29, 'b29, 'c29, 'd29, 'e29, 'f29)          fmtty_rel -&gt; (('g0, 'h0, 'i0, 'j0, 'k0, 'l0) format6 -&gt; 'g1,        'b19, 'c19, 'j1, 'e19, 'f19,        ('g0, 'h0, 'i0, 'j0, 'k0, 'l0) format6 -&gt; 'g2,        'b29, 'c29, 'j2, 'e29, 'f29)       fmtty_rel</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Alpha_ty : ('a110, 'b110, 'c110, 'd110, 'e110, 'f110, 'a210, 'b210, 'c210, 'd210, 'e210,      'f210)     fmtty_rel -&gt; (('b110 -&gt; 'x -&gt; 'c110) -&gt; 'x -&gt; 'a110, 'b110, 'c110, 'd110, 'e110, 'f110,        ('b210 -&gt; 'x -&gt; 'c210) -&gt; 'x -&gt; 'a210, 'b210, 'c210, 'd210, 'e210, 'f210)       fmtty_rel</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Theta_ty : ('a111, 'b111, 'c111, 'd111, 'e111, 'f111, 'a211, 'b211, 'c211, 'd211, 'e211,      'f211)     fmtty_rel -&gt; (('b111 -&gt; 'c111) -&gt; 'a111, 'b111, 'c111, 'd111, 'e111, 'f111,        ('b211 -&gt; 'c211) -&gt; 'a211, 'b211, 'c211, 'd211, 'e211, 'f211)       fmtty_rel</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Any_ty : ('a112, 'b112, 'c112, 'd112, 'e112, 'f112, 'a212, 'b212, 'c212, 'd212, 'e212,      'f212)     fmtty_rel -&gt; ('x0 -&gt; 'a112, 'b112, 'c112, 'd112, 'e112, 'f112, 'x0 -&gt; 'a212, 'b212, 'c212,        'd212, 'e212, 'f212)       fmtty_rel</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Reader_ty : ('a113, 'b113, 'c113, 'd113, 'e113, 'f113, 'a213, 'b213, 'c213, 'd213, 'e213,      'f213)     fmtty_rel -&gt; ('x1 -&gt; 'a113, 'b113, 'c113, ('b113 -&gt; 'x1) -&gt; 'd113, 'e113, 'f113,        'x1 -&gt; 'a213, 'b213, 'c213, ('b213 -&gt; 'x1) -&gt; 'd213, 'e213, 'f213)       fmtty_rel</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Ignored_reader_ty : ('a114, 'b114, 'c114, 'd114, 'e114, 'f114, 'a214, 'b214, 'c214, 'd214, 'e214,      'f214)     fmtty_rel -&gt; ('a114, 'b114, 'c114, ('b114 -&gt; 'x2) -&gt; 'd114, 'e114, 'f114, 'a214, 'b214,        'c214, ('b214 -&gt; 'x2) -&gt; 'd214, 'e214, 'f214)       fmtty_rel</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>End_of_fmtty : ('f115, 'b115, 'c115, 'd115, 'd115, 'f115, 'f215, 'b215, 'c215, 'd215, 'd215,        'f215)       fmtty_rel</code></td>
+
+</tr></tbody></table>
+
+
+
+<pre><span class="keyword">type</span> ('a, 'b, 'c, 'd, 'e, 'f) fmt = </pre><table class="typetable">
+<tbody><tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Char : ('a0, 'b0, 'c0, 'd0, 'e0, 'f0) fmt -&gt; (char -&gt; 'a0, 'b0, 'c0, 'd0, 'e0, 'f0) fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Caml_char : ('a1, 'b1, 'c1, 'd1, 'e1, 'f1) fmt -&gt; (char -&gt; 'a1, 'b1, 'c1, 'd1, 'e1, 'f1) fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>String : ('x, string -&gt; 'a2) padding        * ('a2, 'b2, 'c2, 'd2, 'e2, 'f2) fmt -&gt; ('x, 'b2, 'c2, 'd2, 'e2, 'f2) fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Caml_string : ('x0, string -&gt; 'a3) padding        * ('a3, 'b3, 'c3, 'd3, 'e3, 'f3) fmt -&gt; ('x0, 'b3, 'c3, 'd3, 'e3, 'f3) fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int : int_conv        * ('x1, 'y) padding        * ('y, int -&gt; 'a4) precision        * ('a4, 'b4, 'c4, 'd4, 'e4, 'f4) fmt -&gt; ('x1, 'b4, 'c4, 'd4, 'e4, 'f4) fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int32 : int_conv        * ('x2, 'y0) padding        * ('y0, int32 -&gt; 'a5) precision        * ('a5, 'b5, 'c5, 'd5, 'e5, 'f5) fmt -&gt; ('x2, 'b5, 'c5, 'd5, 'e5, 'f5) fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Nativeint : int_conv        * ('x3, 'y1) padding        * ('y1, nativeint -&gt; 'a6) precision        * ('a6, 'b6, 'c6, 'd6, 'e6, 'f6) fmt -&gt; ('x3, 'b6, 'c6, 'd6, 'e6, 'f6) fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Int64 : int_conv        * ('x4, 'y2) padding        * ('y2, int64 -&gt; 'a7) precision        * ('a7, 'b7, 'c7, 'd7, 'e7, 'f7) fmt -&gt; ('x4, 'b7, 'c7, 'd7, 'e7, 'f7) fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Float : float_conv        * ('x5, 'y3) padding        * ('y3, float -&gt; 'a8) precision        * ('a8, 'b8, 'c8, 'd8, 'e8, 'f8) fmt -&gt; ('x5, 'b8, 'c8, 'd8, 'e8, 'f8) fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Bool : ('x6, bool -&gt; 'a9) padding        * ('a9, 'b9, 'c9, 'd9, 'e9, 'f9) fmt -&gt; ('x6, 'b9, 'c9, 'd9, 'e9, 'f9) fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Flush : ('a10, 'b10, 'c10, 'd10, 'e10, 'f10) fmt -&gt; ('a10, 'b10, 'c10, 'd10, 'e10, 'f10) fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>String_literal : string * ('a11, 'b11, 'c11, 'd11, 'e11, 'f11) fmt -&gt; ('a11, 'b11, 'c11, 'd11, 'e11, 'f11) fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Char_literal : char * ('a12, 'b12, 'c12, 'd12, 'e12, 'f12) fmt -&gt; ('a12, 'b12, 'c12, 'd12, 'e12, 'f12) fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Format_arg : pad_option        * ('g, 'h, 'i, 'j, 'k, 'l) fmtty        * ('a13, 'b13, 'c13, 'd13, 'e13, 'f13) fmt -&gt; (('g, 'h, 'i, 'j, 'k, 'l) format6 -&gt; 'a13, 'b13,        'c13, 'd13, 'e13, 'f13)       fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Format_subst : pad_option        * ('g0, 'h0, 'i0, 'j0, 'k0, 'l0, 'g2, 'b14, 'c14, 'j2, 'd14, 'a14)          fmtty_rel        * ('a14, 'b14, 'c14, 'd14, 'e14, 'f14) fmt -&gt; (('g0, 'h0, 'i0, 'j0, 'k0, 'l0) format6 -&gt; 'g2,        'b14, 'c14, 'j2, 'e14, 'f14)       fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Alpha : ('a15, 'b15, 'c15, 'd15, 'e15, 'f15) fmt -&gt; (('b15 -&gt; 'x7 -&gt; 'c15) -&gt; 'x7 -&gt; 'a15, 'b15, 'c15, 'd15, 'e15, 'f15)       fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Theta : ('a16, 'b16, 'c16, 'd16, 'e16, 'f16) fmt -&gt; (('b16 -&gt; 'c16) -&gt; 'a16, 'b16, 'c16, 'd16, 'e16, 'f16)       fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Formatting_lit : formatting_lit        * ('a17, 'b17, 'c17, 'd17, 'e17, 'f17) fmt -&gt; ('a17, 'b17, 'c17, 'd17, 'e17, 'f17) fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Formatting_gen : ('a18, 'b18, 'c18, 'd18, 'e18, 'f18) formatting_gen        * ('f18, 'b18, 'c18, 'e18, 'e20, 'f20) fmt -&gt; ('a18, 'b18, 'c18, 'd18, 'e20, 'f20) fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Reader : ('a19, 'b19, 'c19, 'd19, 'e19, 'f19) fmt -&gt; ('x8 -&gt; 'a19, 'b19, 'c19, ('b19 -&gt; 'x8) -&gt; 'd19, 'e19, 'f19)       fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Scan_char_set : pad_option * char_set        * ('a20, 'b20, 'c20, 'd20, 'e21, 'f21) fmt -&gt; (string -&gt; 'a20, 'b20, 'c20, 'd20, 'e21, 'f21) fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Scan_get_counter : counter        * ('a21, 'b21, 'c21, 'd21, 'e22, 'f22) fmt -&gt; (int -&gt; 'a21, 'b21, 'c21, 'd21, 'e22, 'f22) fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Scan_next_char : ('a22, 'b22, 'c22, 'd22, 'e23, 'f23) fmt -&gt; (char -&gt; 'a22, 'b22, 'c22, 'd22, 'e23, 'f23) fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Ignored_param : ('a23, 'b23, 'c23, 'd23, 'y4, 'x9) ignored        * ('x9, 'b23, 'c23, 'y4, 'e24, 'f24) fmt -&gt; ('a23, 'b23, 'c23, 'd23, 'e24, 'f24) fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Custom : ('a24, 'x10, 'y5) custom_arity * (unit -&gt; 'x10)        * ('a24, 'b24, 'c24, 'd24, 'e25, 'f25) fmt -&gt; ('y5, 'b24, 'c24, 'd24, 'e25, 'f25) fmt</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>End_of_format : ('f26, 'b25, 'c25, 'e26, 'e26, 'f26) fmt</code></td>
+
+</tr></tbody></table>
+
+<div class="info ">
+<div class="info-desc">
+<p>List of format elements.</p>
+</div>
+</div>
+
+
+<pre><span class="keyword">type</span> ('a, 'b, 'c, 'd, 'e, 'f) ignored = </pre><table class="typetable">
+<tbody><tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Ignored_char : ('a0, 'b0, 'c0, 'd0, 'd0, 'a0) ignored</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Ignored_caml_char : ('a1, 'b1, 'c1, 'd1, 'd1, 'a1) ignored</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Ignored_string : pad_option -&gt; ('a2, 'b2, 'c2, 'd2, 'd2, 'a2) ignored</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Ignored_caml_string : pad_option -&gt; ('a3, 'b3, 'c3, 'd3, 'd3, 'a3) ignored</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Ignored_int : int_conv * pad_option -&gt; ('a4, 'b4, 'c4, 'd4, 'd4, 'a4) ignored</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Ignored_int32 : int_conv * pad_option -&gt; ('a5, 'b5, 'c5, 'd5, 'd5, 'a5) ignored</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Ignored_nativeint : int_conv * pad_option -&gt; ('a6, 'b6, 'c6, 'd6, 'd6, 'a6) ignored</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Ignored_int64 : int_conv * pad_option -&gt; ('a7, 'b7, 'c7, 'd7, 'd7, 'a7) ignored</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Ignored_float : pad_option * prec_option -&gt; ('a8, 'b8, 'c8, 'd8, 'd8, 'a8) ignored</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Ignored_bool : pad_option -&gt; ('a9, 'b9, 'c9, 'd9, 'd9, 'a9) ignored</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Ignored_format_arg : pad_option        * ('g, 'h, 'i, 'j, 'k, 'l) fmtty -&gt; ('a10, 'b10, 'c10, 'd10, 'd10, 'a10) ignored</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Ignored_format_subst : pad_option        * ('a11, 'b11, 'c11, 'd11, 'e0, 'f0) fmtty -&gt; ('a11, 'b11, 'c11, 'd11, 'e0, 'f0) ignored</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Ignored_reader : ('a12, 'b12, 'c12, ('b12 -&gt; 'x) -&gt; 'd12, 'd12, 'a12)       ignored</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Ignored_scan_char_set : pad_option * char_set -&gt; ('a13, 'b13, 'c13, 'd13, 'd13, 'a13) ignored</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Ignored_scan_get_counter : counter -&gt; ('a14, 'b14, 'c14, 'd14, 'd14, 'a14) ignored</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Ignored_scan_next_char : ('a15, 'b15, 'c15, 'd15, 'd15, 'a15) ignored</code></td>
+
+</tr></tbody></table>
+
+
+
+<pre><span class="keyword">type</span> ('a, 'b, 'c, 'd, 'e, 'f) format6 = </pre><table class="typetable">
+<tbody><tr>
+<td align="left" valign="top">
+<code>|</code></td>
+<td align="left" valign="top">
+<code>Format of ('a, 'b, 'c, 'd, 'e, 'f) fmt * string</code></td>
+
+</tr></tbody></table>
+
+
+
+<pre id="VALconcat_fmtty">val concat_fmtty : ('g1, 'b1, 'c1, 'j1, 'd1, 'a1, 'g2, 'b2, 'c2, 'j2, 'd2, 'a2)       fmtty_rel -&gt;       ('a1, 'b1, 'c1, 'd1, 'e1, 'f1, 'a2, 'b2, 'c2, 'd2, 'e2, 'f2)       fmtty_rel -&gt;       ('g1, 'b1, 'c1, 'j1, 'e1, 'f1, 'g2, 'b2, 'c2, 'j2, 'e2, 'f2)       fmtty_rel</pre>
+<pre id="VALerase_rel">val erase_rel : ('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k, 'l)       fmtty_rel -&gt;       ('a, 'b, 'c, 'd, 'e, 'f) fmtty</pre>
+<pre id="VALconcat_fmt">val concat_fmt : ('a, 'b, 'c, 'd, 'e, 'f) fmt -&gt;       ('f, 'b, 'c, 'e, 'g, 'h) fmt -&gt;       ('a, 'b, 'c, 'd, 'g, 'h) fmt</pre>
+</div></div><span><script src="/js/redirectBlog.js"></script></span></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '966d1e412f67114a07dc0afe44b19b53',
+                indexName: 'reason',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["lang:en"]}
+              });
+            </script></body></html>
