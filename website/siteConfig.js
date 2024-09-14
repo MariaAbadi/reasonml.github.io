@@ -273,6 +273,16 @@ const users = [
     name: "Lukin Co.",
     image: "img/logos/lukin.svg",
     infoLink: "https://lukin.co",
+  },
+  {
+    name: "OneChronos",
+    image: "img/logos/onechronos.svg",
+    infoLink: "https://www.onechronos.com",
+  },
+  {
+    name: "Pagepro",
+    image: "img/logos/pagepro.svg",
+    infoLink: "https://pagepro.co",
   }
 ];
 
